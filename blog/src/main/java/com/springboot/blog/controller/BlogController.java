@@ -5,12 +5,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
+
 @Controller
 public class BlogController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView home() {
+        HashMap<String, String> model = new HashMap<String, String>();
         ModelAndView modView = new ModelAndView("index.html");
-        modView.addObject("title", "How to Spring Boot 101");
+        model.put("title", "How to Spring Boot 101");
+        model.put("description", "This blog post will focus on introduction to Spring Boot.");
+        model.put("image", "https://via.placeholder.com/800");
+        modView.addObject("post", model);
         return modView;
     }
 
