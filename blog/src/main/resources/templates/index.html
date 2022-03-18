@@ -33,7 +33,7 @@
         </div>
     </nav>
     <div class="container py-4">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4" th:unless="${#lists.isEmpty(post)}">
             <div class="col" th:each="item : ${post}">
                 <div class="card">
                     <img th:src="${item.image}" class="card-img-top" style="max-height: 250px;">
@@ -44,6 +44,9 @@
                 </div>
             </div>
         </div>
+        <th:block>
+            <p th:if="${#lists.isEmpty(post)}">No posts found</p>
+        </th:block>
     </div>
 </body>
 </html>
