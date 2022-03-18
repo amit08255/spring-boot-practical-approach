@@ -9,7 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class BlogController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView home() {
-        return new ModelAndView("index.html");
+        ModelAndView modView = new ModelAndView("index.html");
+        modView.addObject("title", "How to Spring Boot 101");
+        return modView;
     }
 
     @RequestMapping(value = "/archive", method = RequestMethod.GET)
