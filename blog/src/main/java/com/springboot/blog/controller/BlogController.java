@@ -1,22 +1,19 @@
 package com.springboot.blog.controller;
 
+import com.springboot.blog.model.Blog;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
 
 @Controller
 public class BlogController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView home() {
-        HashMap<String, String> model = new HashMap<String, String>();
+        Blog blog = new Blog();
         ModelAndView modView = new ModelAndView("index.html");
-        model.put("title", "How to Spring Boot 101");
-        model.put("description", "This blog post will focus on introduction to Spring Boot.");
-        model.put("image", "https://via.placeholder.com/800");
-        modView.addObject("post", model);
+        modView.addObject("post", blog.getPostList());
         return modView;
     }
 
